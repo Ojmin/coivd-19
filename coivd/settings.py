@@ -37,10 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mongoengine',
-    'coivd.app.user',
     'coivd.app.info',
 ]
-AUTH_USER_MODEL = "user.User"
+
 
 MIDDLEWARE = [
     # 'django.middleware.security.SecurityMiddleware',
