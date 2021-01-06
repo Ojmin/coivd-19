@@ -1,3 +1,5 @@
+import json
+
 from mongoengine import *
 
 
@@ -17,4 +19,4 @@ class Info(Document):
     def show_newest(self, queryset):
         # 通过poem_id降序显示
         queryset = queryset.order_by('-id')[:1][0]
-        return {"ret": queryset['ret'], "data": queryset['data']}
+        return json.dumps({"ret": queryset['ret'], "data": queryset['data']})

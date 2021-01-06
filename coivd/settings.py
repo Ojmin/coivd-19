@@ -25,8 +25,24 @@ SECRET_KEY = 'rs_4c=926#$ehyw89v90xn=-&rmb!f=tt)gxy#q_f0%jsrdlqy'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['*']
+CORS_ORIGIN_ALLOW_ALL = True  # 如果为True,将不使用白名单,并且将接受所有来源。默认为False。
+CORS_ALLOW_CREDENTIALS = True
 
+# 白名单
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:8080",
+    "http://127.0.0.1:8080",
+    "http://192.168.0.101:8080"
+]
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
 # Application definition
 
 INSTALLED_APPS = [
@@ -35,17 +51,19 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'corsheaders',
     'django.contrib.staticfiles',
     'mongoengine',
     'coivd.app.info',
 ]
 
-
 MIDDLEWARE = [
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'corsheaders.middleware.CorsMiddleware',  # 注册中间件
+    'django.middleware.common.CommonMiddleware',
     # 'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -71,7 +89,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'coivd.wsgi.application'
 
-
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.dummy'
@@ -86,6 +103,7 @@ MONGODB_DATABASES = {
     },
 }
 from mongoengine import connect
+
 connect('test', host='127.0.0.1')
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
