@@ -36,7 +36,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'mongoengine',
     'coivd.app.user',
+    'coivd.app.info',
 ]
 AUTH_USER_MODEL = "user.User"
 
@@ -70,20 +72,22 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'coivd.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME':'coivd',
-        'USER': 'root',
-        'PASSWORD': 'Sx1227..',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-    }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.dummy'
+#     }
+# }
+
+MONGODB_DATABASES = {
+    "default": {
+        "name": "test",
+        "host": '127.0.0.1',
+        "tz_aware": True,  # 设置时区
+    },
 }
-
+from mongoengine import connect
+connect('test', host='127.0.0.1')
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
