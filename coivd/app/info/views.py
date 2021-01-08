@@ -15,8 +15,6 @@ class CoivdInfo(View):
     def post(self, request):
         ret = request.POST.get("ret")
         data = request.POST.get("data")
-        print(ret)
-        print(data)
         if data is None:
             logger.info('缺少参数')
             return JsonResponse({'msg': '缺少参数'}, status=200)
