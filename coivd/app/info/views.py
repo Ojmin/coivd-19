@@ -1,21 +1,24 @@
+import json
+
 from django.http import HttpResponse, JsonResponse
 from django.views import View
 
-from utils.logger import logger
+from coivd.utils.logger import logger
 from .models import Info
 
 
 class CoivdInfo(View):
     def get(self, request):
         func_name = request.GET.get("callback")
-        info = '{0}({1})'.format(func_name, Info.show_newest)
+        date = request.GET.get('date')
+        json_info = Info.show_newest(date)
+        info = '{0}({1})'.format(func_name, json_info)
         info = HttpResponse(info)
         return info
 
     def post(self, request):
         ret = request.POST.get("ret")
         data = request.POST.get("data")
-        print(ret)
         print(data)
         if data is None:
             logger.info('缺少参数')
