@@ -1,1 +1,0 @@
-from .user.apps import UserConfig

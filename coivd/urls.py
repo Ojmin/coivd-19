@@ -13,13 +13,10 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
 from django.urls import path
 
-from coivd.app.user import urls
-from coivd.app.user.views import Sessions, Users
+from coivd.app.info.views import CoivdInfo
 
 urlpatterns = [
-    path(r'session', Sessions.as_view()),
-    path(r'user', Users.as_view()),
+    path(r'coivd_info', CoivdInfo.as_view()),
 ]
