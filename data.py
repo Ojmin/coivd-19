@@ -10,7 +10,7 @@ from coivd.utils.logger import logger
 
 r = json.loads(requests.get("https://view.inews.qq.com/g2/getOnsInfo?name=disease_foreign").text)
 
-b = requests.post("http://127.0.0.1:8000/coivd_info", data=r)
+b = requests.post("http://8.135.59.30/coivd_info", data=r)
 
 logger.info(b.text)
 print(b.text)

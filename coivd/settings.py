@@ -25,7 +25,7 @@ SECRET_KEY = 'rs_4c=926#$ehyw89v90xn=-&rmb!f=tt)gxy#q_f0%jsrdlqy'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-# ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*']
 CORS_ORIGIN_ALLOW_ALL = True  # 如果为True,将不使用白名单,并且将接受所有来源。默认为False。
 CORS_ALLOW_CREDENTIALS = True
 

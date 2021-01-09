@@ -48,17 +48,17 @@ class Info(Document):
             item['province']=i['province']
             newTopList.append(item)
         newimportStatis['TopList']=newTopList
-        newglobalStatis['nowConfirm'] = globalStatis["nowConfirm"] - 1000 * step if globalStatis[
-                                                                                        "nowConfirm"] - 1000 * step > 0 else random.randint(
+        newglobalStatis['nowConfirm'] = globalStatis["nowConfirm"] - 100000 * step if globalStatis[
+                                                                                        "nowConfirm"] - 100000 * step > 0 else random.randint(
             10000, 99999)
-        newglobalStatis['confirm'] = globalStatis["confirm"] - 1000 * step if globalStatis[
-                                                                                  "confirm"] - 1000 * step > 0 else random.randint(
+        newglobalStatis['confirm'] = globalStatis["confirm"] - 100000 * step if globalStatis[
+                                                                                  "confirm"] - 100000 * step > 0 else random.randint(
             1000000, 9999999)
-        newglobalStatis['heal'] = globalStatis["heal"] - 1000 * step if globalStatis[
-                                                                            "heal"] - 1000 * step > 0 else random.randint(
+        newglobalStatis['heal'] = globalStatis["heal"] - 100000 * step if globalStatis[
+                                                                            "heal"] - 100000 * step > 0 else random.randint(
             10000, 99999)
-        newglobalStatis['dead'] = globalStatis["dead"] - 1000 * step if globalStatis[
-                                                                            "dead"] - 1000 * step > 0 else random.randint(
+        newglobalStatis['dead'] = globalStatis["dead"] - 100000 * step if globalStatis[
+                                                                            "dead"] - 100000 * step > 0 else random.randint(
             10000, 99999)
         newglobalStatis['nowConfirmAdd'] = globalStatis["nowConfirmAdd"] - 100000 * step if globalStatis[
                                                                                                 "nowConfirmAdd"] - 100000 * step > 0 else random.randint(
@@ -87,8 +87,8 @@ class Info(Document):
                 newcontinentStatis.append(i)
         for i in countryAddConfirmRankList:
             new_countryAddConfirmRank = {}
-            num = i['addConfirm'] - 1000 * step
-            new_countryAddConfirmRank['addConfirm'] = num if num > 0 else random.randint(1000, 9999)
+            num = i['addConfirm'] - 100000 * step
+            new_countryAddConfirmRank['addConfirm'] = num if num > 0 else random.randint(10000, 99999)
             new_countryAddConfirmRank['nation'] = i['nation']
             newcountryAddConfirmRankList.append(new_countryAddConfirmRank)
             # print(new_countryAddConfirmRank)
